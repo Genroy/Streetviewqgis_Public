@@ -1,0 +1,21 @@
+[general]
+name=StreetViewQGISCejBmaversion
+qgisMinimumVersion=3.4
+description=Show Google Street View in QGIS dock widget
+version=2.0.6
+author=Thamoon Kedkaew (Cej)
+email=pongsakornche@gmail.com
+
+about=Plugin that allows users to open Google Street View in a dock widget inside QGIS.
+
+tracker=https://github.com/Genroy/QgisStreetwidgetPlugin/issues
+repository=https://github.com/Genroy/QgisStreetwidgetPlugin
+homepage=https://genxqx.wixsite.com/ceejay
+
+hasProcessingProvider=no
+tags=Streetview
+category=streetview
+icon=icon.png
+experimental=False
+deprecated=False
+server=False

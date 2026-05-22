@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Street View Dock</title>
+<style>
+  html, body { height:100%; margin:0; }
+  #pano { height: 100%; }
+</style>
+<script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+<script>
+let pano, svService;
+let channelObject=null;
+
+new QWebChannel(qt.webChannelTransport, function(channel) {
+  channelObject = channel.objects.bridge || channel.objects.pyHandler || null;
+});
+
+function init() {
+  svService = new google.maps.StreetViewService();
+  const start = {lat: parseFloat("{lat}"), lng: parseFloat("{lon}")};
+
+  pano = new google.maps.StreetViewPanorama(document.getElementById('pano'), {
+    position: start,
+    pov: { heading: parseFloat("{heading}"), pitch: 0 },
+    zoom: 1
+  });
+
+  // Relay camera+zoom to Python
+  pano.addListener('pov_changed', () => {
+    const pov = pano.getPov();
+    if (channelObject && channelObject.updateCamera) channelObject.updateCamera(pov.heading||0, pov.pitch||0, pano.getZoom()||1);
+  });
+  pano.addListener('zoom_changed', () => {
+    const pov = pano.getPov();
+    if (channelObject && channelObject.updateCamera) channelObject.updateCamera(pov.heading||0, pov.pitch||0, pano.getZoom()||1);
+  });
+  pano.addListener('position_changed', () => {
+    const pos = pano.getPosition();
+    if (pos && channelObject && channelObject.updatePosition) channelObject.updatePosition(pos.lat(), pos.lng());
+  });
+
+  setTargetLocation(start.lat, start.lng);
+}
+
+window.setTargetLocation = function(lat, lng) {
+  const loc = new google.maps.LatLng(lat, lng);
+  svService.getPanorama({ location: loc, radius: 50 }, (data, status) => {
+    if (status === 'OK' && data && data.location) {
+      const svLoc = data.location.latLng;
+      const heading = google.maps.geometry.spherical.computeHeading(svLoc, loc);
+      pano.setPano(data.location.pano);
+      pano.setPosition(svLoc);
+      pano.setPov({ heading: heading, pitch: 0 });
+      pano.setZoom(1);
+      if (channelObject && channelObject.updateCamera) channelObject.updateCamera(heading||0, 0, 1);
+      if (channelObject && channelObject.updatePosition) channelObject.updatePosition(svLoc.lat(), svLoc.lng());
+    } else {
+      alert('ไม่มีภาพ Street View ครอบคลุมบริเวณที่เลือกกรุณาเลือกสถานที่ใกล้เคียงอื่น ขอบคุณครับ ');
+    }
+  });
+}
+</script>
+</head>
+<body>
+<div id="pano"></div>
+<script src="https://maps.googleapis.com/maps/api/js?key={api_key}&libraries=geometry&callback=init" async defer></script>
+</body>
+</html>
