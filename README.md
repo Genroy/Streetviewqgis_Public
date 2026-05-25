@@ -1,4 +1,4 @@
-# streetviewqgiscejv2
+# Streetviewqgis_Public
 Plugin that allows users to open Google Street View in a dock widget inside QGIS.
 # StreetView QGIS Plugin
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://plugins.qgis.org/plugins/)
