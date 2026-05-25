@@ -90,6 +90,6 @@ Developed by:
 ขอขอบคุณชุมชน QGIS สำหรับแรงบันดาลใจและการสนับสนุน!
 ---
 ### Repository 
-- GitHub Repository: [https://github.com/Genroy/streetviewqgiscejv2
+- GitHub Repository: [https://github.com/Genroy/Streetviewqgis_Public
 - E-Mail Pongsakornche@gmail.com
-(C) 2011-2018 GeoApt LLC - geoapt.com
+(C) 2011-2025 GeoApt LLC - geoapt.com
