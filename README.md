@@ -10,10 +10,10 @@ A QGIS plugin that allows you to view Google Street View interactively by clicki
 Developed with ❤️ by **Thamoon Kedkaew CeJ** 
 ### Features
 -
-Open a dockable window inside QGIS  
-Click anywhere on the map to open the corresponding Google Street View  
-Support coordinates to WGS84 (EPSG:4326)  
-Lightweight, simple, and fast
+- Open a dockable window inside QGIS  
+- Click anywhere on the map to open the corresponding Google Street View  
+- Support coordinates to WGS84 (EPSG:4326)  
+- Lightweight, simple, and fast
 ---
 ### Requirements
 - QGIS 3.4  or move
