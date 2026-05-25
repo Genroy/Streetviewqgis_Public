@@ -8,8 +8,8 @@ email=pongsakornche@gmail.com
 
 about=Plugin that allows users to open Google Street View in a dock widget inside QGIS.
 
-tracker=https://github.com/Genroy/QgisStreetwidgetPlugin/issues
-repository=https://github.com/Genroy/QgisStreetwidgetPlugin
+tracker=https://github.com/Genroy/Streetviewqgis_Public
+repository=https://github.com/Genroy/Streetviewqgis_Public
 homepage=https://genxqx.wixsite.com/ceejay
 
 hasProcessingProvider=no
