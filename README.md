@@ -9,7 +9,7 @@ Plugin that allows users to open Google Street View in a dock widget inside QGIS
 A QGIS plugin that allows you to view Google Street View interactively by clicking on the map canvas.
 Developed with ❤️ by **Thamoon Kedkaew CeJ** 
 ### Features
--
+
 - Open a dockable window inside QGIS  
 - Click anywhere on the map to open the corresponding Google Street View  
 - Support coordinates to WGS84 (EPSG:4326)  
